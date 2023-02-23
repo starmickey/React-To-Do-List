@@ -3,11 +3,17 @@ import List from "./List";
 
 function App() {
    const [items, setItems] = useState([]);
+   const [inputText, setInputText] = useState("");
+
+   function handleInputChange(event) {
+      setInputText(event.target.value);
+   }
 
    function handleSubmit(event) {
-      const newItem = event.target[0].value;
+      const newItem = inputText;
 
       setItems(prevItems => [...prevItems, newItem]);
+      setInputText("");
       event.preventDefault();
    }
 
@@ -21,7 +27,11 @@ function App() {
             <h1>To-Do List</h1>
          </div>
          <form onSubmit={handleSubmit}>
-            <input type="text" />
+            <input
+               type="text"
+               onChange={handleInputChange}
+               value={inputText}
+            />
             <button>
                <span>Add</span>
             </button>
