@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Item(props) {
-    return <li>{props.value}</li>
+    const [isDone, setIsDone] = useState(false);
+    const style = { textDecoration: isDone ? "line-through" : "none"};
+
+    function handleClick() {
+        setIsDone(prevValue => !prevValue);
+    }
+
+    return <li onClick={handleClick} style={style}> {props.value}</li>
 }
 
 export default Item;
