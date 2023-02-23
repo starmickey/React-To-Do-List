@@ -2,13 +2,18 @@ import React from "react";
 import Item from "./Item";
 
 function List(props) {
-    const items = props.items;
-
-    
-    
-    return (<ul>
-        {items.map((item, index) => <Item id={index} key={index} value={item} deleteItemMethod={props.deleteItemMethod} />)}
-     </ul>)
+   
+   return (<ul>
+      {props.items.map((item, index) => {
+         return (
+            <Item
+               id={index}
+               key={index}
+               value={item}
+               onRemove={props.onRemove}
+            />);
+      })}
+   </ul>)
 }
 
 export default List;

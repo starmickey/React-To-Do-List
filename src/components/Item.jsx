@@ -2,18 +2,20 @@ import React, { useState } from "react";
 
 function Item(props) {
     const [isDone, setIsDone] = useState(false);
-    const style = { textDecoration: isDone ? "line-through" : "none" };
 
     function lineThroughItem() {
         setIsDone(prevValue => !prevValue);
     }
 
     return (<li>
-        <div onClick={lineThroughItem} style={style}>
+        <div
+            onClick={lineThroughItem}
+            style={{ textDecoration: isDone ? "line-through" : "none" }}>
             {props.value}
         </div>
+
         <button
-            onClick={() => props.deleteItemMethod(props.id)}>
+            onClick={() => props.onRemove(props.id)}>
             remove
         </button>
     </li>);
