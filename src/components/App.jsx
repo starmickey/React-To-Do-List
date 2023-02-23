@@ -6,9 +6,13 @@ function App() {
 
    function handleSubmit(event) {
       const newItem = event.target[0].value;
-      
+
       setItems(prevItems => [...prevItems, newItem]);
       event.preventDefault();
+   }
+
+   function deleteItem(id) {
+      setItems(prevItems => prevItems.filter((item, index) => index !== id));
    }
 
    return (
@@ -23,7 +27,10 @@ function App() {
             </button>
          </form>
          <div>
-            <List items={items} />
+            <List
+               items={items}
+               deleteItemMethod={deleteItem}
+            />
          </div>
       </div>
    );
