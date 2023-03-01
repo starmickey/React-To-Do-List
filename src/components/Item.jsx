@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Item(props) {
     const [isDone, setIsDone] = useState(false);
@@ -16,7 +17,7 @@ function Item(props) {
 
         <button
             onClick={() => props.onRemove(props.id)}>
-            remove
+            <DeleteIcon />
         </button>
     </li>);
 }
